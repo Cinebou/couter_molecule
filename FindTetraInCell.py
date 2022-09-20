@@ -34,7 +34,6 @@ def InOut_Cell(pos):
     x = pos[0] 
     y = pos[1] 
     z = pos[2] 
-    x_min = y/sqrt(3) + z/sqrt(6)
     x_min = (bx*cz*y-(bx*cy-by*cx)*z)/by/cz
     x_max = x_min + ax
     y_min = z*cy/cz
@@ -102,10 +101,10 @@ for k in range(num_O1):
 
 # find the tetrahedra strucuture
 tetra_list = []
-for p in range(num_O1): # 1つめのノードを選択
-    for q in close_O1[p]: # 次のノードを探索（辺が完成）
-        com_node = list(set(close_O1[p]) & set(close_O1[q]))  # p node と q node　の共通ノード
-        if len(com_node) == 2: # 共通ノードが二つあれば4面体が完成
+for p in range(num_O1): # select forst node
+    for q in close_O1[p]: # select second node（you can make edge）
+        com_node = list(set(close_O1[p]) & set(close_O1[q]))  # common node between 'p' node and 'q' node
+        if len(com_node) == 2: # if there are two common node, you can make tetrahidra stracture
             tetra_list.append([p, q, com_node[0],com_node[1]])
 
 tetra_list = [sorted(l) for l in tetra_list]
