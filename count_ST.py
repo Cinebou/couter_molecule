@@ -87,5 +87,5 @@ def countST(P):
 
 if __name__ == '__main__':
     # target pressure
-    Pressure = '1000000'
+    Pressure = '300000'
     countST(Pressure)
