@@ -5,21 +5,21 @@ from FindTetraInCell import ax, bx, by, cx, cy, cz
 
 global surface_depth
 # depth of the surrounding surface of the original cell
-surface_depth = 12 
+surface_depth = 5 
 
 def judge_surface(x, y, z):
     # surface depth is extended in the virtical direction of the wall 
     x_min_surface = (bx*cz*y-(bx*cy-by*cx)*z)/by/cz - surface_depth*sqrt((by*cz)**2+(bx*cz)**2+(bx*cy-by*cx)**2)/by/cz
-    x_max_surface = x_min_surface + ax + surface_depth*sqrt((by*cz)**2+(bx*cz)**2+(bx*cy-by*cx)**2)/by/cz
+    x_max_surface = x_min_surface + ax + surface_depth*sqrt((by*cz)**2+(bx*cz)**2+(bx*cy-by*cx)**2)/by/cz + 3
      
-    y_min_surface = z*cy/cz - surface_depth * sqrt(cy**2+cz**2)/cy 
-    y_max_surface = y_min_surface + by + surface_depth * sqrt(cy**2+cz**2)/cy
+    y_min_surface = z*cy/cz - surface_depth*sqrt(cy**2+cz**2)/cy +3
+    y_max_surface = y_min_surface + by + surface_depth*sqrt(cy**2+cz**2)/cy
 
     # z surface is pararell to the original xyz coordinates 
     z_min_surface = 0 - surface_depth
     z_max_surface = cz + surface_depth
 
-    if (x_min_surface <= x < x_max_surface) & (y_min_surface <= y < y_max_surface) & (z_min_surface <= z < z_max_surface):
+    if (x_min_surface <= x <= x_max_surface) & (y_min_surface <= y <= y_max_surface) & (z_min_surface <= z <= z_max_surface):
         return True
     else:
         return False
