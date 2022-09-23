@@ -3,15 +3,15 @@ import csv
 from math import sqrt, sin, cos, radians
 
 
-cell_L_x = 62.840
-cell_L_y = 62.840
-cell_L_z = 62.840
+cell_L_x = 59.694
+cell_L_y = 59.830
+cell_L_z = 59.838
 
-cell_angle_a = radians(60)	
-cell_angle_b = radians(60)
-cell_angle_c = radians(60)
+cell_angle_a = radians(59.86)	
+cell_angle_b = radians(59.74)
+cell_angle_c = radians(59.74)
 
-global ax, bx, by, cx, cy, cz
+global ax, bx, by, cx, cy, cz, file_name
 ax = cell_L_x
 bx = cell_L_y*cos(cell_angle_c)
 by = cell_L_y*sin(cell_angle_c)
@@ -19,7 +19,7 @@ cx = cell_L_z*cos(cell_angle_b)
 cy = cell_L_z*(cos(cell_angle_a)-cos(cell_angle_b)*cos(cell_angle_c))/sin(cell_angle_c)
 cz = sqrt(cell_L_z**2 - cx**2 - cy**2)
 
-
+file_name = 'Framework_MIL101-SO3H.pdb'
 
 # mass cener of 4 points from the list 'pos'
 def mass_center(pos,a,b,c,d):
@@ -49,7 +49,7 @@ def InOut_Cell(pos):
 
 def main():
     # read the position of O1 from cif file
-    f = open('Framework_MIL101.pdb','r')
+    f = open(file_name,'r')
     posline = f.readlines()
     O1_list = []
     for line in posline:
